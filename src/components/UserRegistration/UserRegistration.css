@@ -1,0 +1,49 @@
+.App {
+    text-align: center;
+  }
+  
+  .registration-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 1em;
+  }
+  
+  .registration-form h2 {
+    margin-bottom: 1em;
+  }
+  
+  .registration-form div {
+    margin-bottom: 1em;
+  }
+  
+  .registration-form label {
+    display: block;
+    margin-bottom: 0.5em;
+  }
+  
+  .registration-form input {
+    width: 100%;
+    padding: 0.5em;
+    box-sizing: border-box;
+  }
+  
+  .registration-form .error {
+    color: red;
+    font-size: 0.8em;
+  }
+  
+  .registration-form button {
+    padding: 0.7em;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 0.3em;
+    cursor: pointer;
+  }
+  
+  .registration-form button:hover {
+    background-color: #0056b3;
+  }
+  

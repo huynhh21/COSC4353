@@ -1,0 +1,21 @@
+.notification {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 1em;
+    margin: 0.5em 0;
+    border: 1px solid #f5c6cb;
+    border-radius: 0.25em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .notification button {
+    background: none;
+    border: none;
+    color: #721c24;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  

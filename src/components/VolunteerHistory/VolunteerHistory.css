@@ -1,0 +1,30 @@
+.volunteer-history {
+    max-width: 800px;
+    margin: 2em auto;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 1em;
+    background-color: #fff;
+  }
+  
+  .volunteer-history h2 {
+    margin-bottom: 1em;
+  }
+  
+  .volunteer-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+  }
+  
+  .volunteer-table th,
+  .volunteer-table td {
+    border: 1px solid #ddd;
+    padding: 0.5em;
+    text-align: left;
+  }
+  
+  .volunteer-table th {
+    background-color: #f4f4f4;
+  }
+  
