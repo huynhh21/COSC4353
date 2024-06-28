@@ -1,42 +1,18 @@
 .notification-system {
-    max-width: 500px;
-    margin: 2em auto;
-    padding: 1em;
-    border: 1px solid #ccc;
-    border-radius: 1em;
-    background-color: #fff;
-  }
-  
-  .notification-system h2 {
-    margin-bottom: 1em;
-  }
-  
-  .notification-system div {
-    margin-bottom: 1em;
-  }
-  
-  .notification-system input {
-    width: calc(100% - 120px);
-    padding: 0.5em;
-    margin-right: 10px;
-    box-sizing: border-box;
-  }
-  
-  .notification-system button {
-    padding: 0.5em 1em;
-    color: #fff;
-    background-color: #28a745;
-    border: none;
-    border-radius: 0.25em;
-    cursor: pointer;
-  }
-  
-  .notification-system button:hover {
-    background-color: #218838;
-  }
-  
-  .notifications {
-    max-height: 200px;
-    overflow-y: auto;
-  }
+  max-width: 600px;
+  margin: 2em auto;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 1em;
+  background-color: #fff;
+}
+
+.notification-system h2 {
+  margin-bottom: 1em;
+}
+
+.notifications {
+  max-height: 400px;
+  overflow-y: auto;
+}
   

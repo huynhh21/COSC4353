@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
+import './UserRegistration.css';
 
-const RegistrationForm = () => {
+const UserRegistration = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
     confirmPassword: ''
   });
-
-  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,43 +16,33 @@ const RegistrationForm = () => {
     });
   };
 
-  const validate = () => {
-    let validationErrors = {};
-    if (!formData.email) validationErrors.email = "Email is required";
-    if (!formData.password) validationErrors.password = "Password is required";
-    if (formData.password !== formData.confirmPassword) validationErrors.confirmPassword = "Passwords do not match";
-    return validationErrors;
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-    } else {
-      console.log('Form data submitted:', formData);
-      // Here, you can handle form submission, e.g., send the data to a server.
-    }
+    // Handle form submission logic here
+    console.log(formData);
+    // Reset form data
+    setFormData({
+      email: '',
+      password: '',
+      confirmPassword: ''
+    });
   };
 
   return (
-    <div className="registration-form">
-      <h2>Register</h2>
+    <div className="user-registration">
+      <h2>User Registration</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Email:</label>
-          <input type="email" name="email" value={formData.email} onChange={handleChange} />
-          {errors.email && <span className="error">{errors.email}</span>}
+          <input type="email" name="email" value={formData.email} onChange={handleChange} required />
         </div>
         <div>
           <label>Password:</label>
-          <input type="password" name="password" value={formData.password} onChange={handleChange} />
-          {errors.password && <span className="error">{errors.password}</span>}
+          <input type="password" name="password" value={formData.password} onChange={handleChange} required />
         </div>
         <div>
           <label>Confirm Password:</label>
-          <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} />
-          {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
+          <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} required />
         </div>
         <button type="submit">Register</button>
       </form>
@@ -61,4 +50,4 @@ const RegistrationForm = () => {
   );
 };
 
-export default RegistrationForm;
+export default UserRegistration;

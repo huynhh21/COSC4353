@@ -1,49 +1,48 @@
-.App {
-    text-align: center;
-  }
-  
-  .registration-form {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 1em;
-    border: 1px solid #ccc;
-    border-radius: 1em;
-  }
-  
-  .registration-form h2 {
-    margin-bottom: 1em;
-  }
-  
-  .registration-form div {
-    margin-bottom: 1em;
-  }
-  
-  .registration-form label {
-    display: block;
-    margin-bottom: 0.5em;
-  }
-  
-  .registration-form input {
-    width: 100%;
-    padding: 0.5em;
-    box-sizing: border-box;
-  }
-  
-  .registration-form .error {
-    color: red;
-    font-size: 0.8em;
-  }
-  
-  .registration-form button {
-    padding: 0.7em;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 0.3em;
-    cursor: pointer;
-  }
-  
-  .registration-form button:hover {
-    background-color: #0056b3;
-  }
+.user-registration {
+  max-width: 500px;
+  margin: 2em auto;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 1em;
+  background-color: #fff;
+}
+
+.user-registration h2 {
+  margin-bottom: 1em;
+}
+
+.user-registration form {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-registration form div {
+  margin-bottom: 1em;
+}
+
+.user-registration label {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.user-registration input {
+  width: 100%;
+  padding: 0.5em;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 0.3em;
+}
+
+.user-registration button {
+  padding: 0.7em;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 0.3em;
+  cursor: pointer;
+}
+
+.user-registration button:hover {
+  background-color: #0056b3;
+}
   
