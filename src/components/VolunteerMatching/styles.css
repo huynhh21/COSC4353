@@ -1,0 +1,36 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(to right, #00AAFF, #00FF6C)
+}
+
+.format {
+    display: grid;
+    justify-content: center;
+}
+
+.button {
+    display: inline-block;
+}
+
+.button > button {
+    cursor: pointer;
+}
+
+.header-center {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.body-left {
+    text-align: left;
+}
+
+.newline::after {
+    content: "\A";
+    white-space: pre;
+}
