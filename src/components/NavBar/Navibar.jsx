@@ -20,8 +20,8 @@ function Bar() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link as={Link} to={"/"}>Home</Nav.Link>
-                <Nav.Link as={Link} to={"/login"}>Login</Nav.Link>
+{/*                 <Nav.Link as={Link} to={"/"}>Home</Nav.Link> */}
+                <Nav.Link as={Link} to={"/"}>Login</Nav.Link>
                 <Nav.Link as={Link} to={"/create"}>Register</Nav.Link>
                 <Nav.Link as={Link} to={"/users"}>Users</Nav.Link>
               </Nav>
@@ -31,9 +31,9 @@ function Bar() {
       </div>
       <div>
         <Routes>
-          <Route path="/" element={<Home />} />
+{/*           <Route path="/" element={<Home />} /> */}
 
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
 
           <Route path="/loggedin/:id" element={<LoggedIn />} />
 
