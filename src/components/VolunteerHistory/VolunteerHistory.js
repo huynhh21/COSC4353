@@ -1,28 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './VolunteerHistory.css';
 
-const VolunteerHistory = () => {
-  // Sample data for demonstration purposes
-  const [volunteerEntries] = useState([
-    {
-      id: 1,
-      eventName: 'Beach Cleanup',
-      eventDescription: 'Cleaning the beach area',
-      location: 'Miami Beach',
-      skills: 'Teamwork, Physical Strength',
-      urgency: 'High',
-      eventDate: '2024-07-15'
-    },
-    {
-      id: 2,
-      eventName: 'Food Drive',
-      eventDescription: 'Collecting and distributing food',
-      location: 'Community Center',
-      skills: 'Organization, Communication',
-      urgency: 'Medium',
-      eventDate: '2024-08-20'
-    }
-  ]);
+const VolunteerHistory = ({ userId }) => {
+  const [volunteerEntries, setVolunteerEntries] = useState([]);
+
+  useEffect(() => {
+    const fetchVolunteerHistory = async () => {
+      try {
+        const response = await axios.get('/volunteerHistory', {
+          params: { userId }
+        });
+        setVolunteerEntries(response.data);
+      } catch (error) {
+        console.error('Error fetching volunteer history:', error);
+      }
+    };
+
+    fetchVolunteerHistory();
+  }, [userId]);
 
   return (
     <div className="volunteer-history">
