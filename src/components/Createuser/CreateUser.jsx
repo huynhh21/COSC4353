@@ -17,7 +17,7 @@ function CreateUser() {
             setMessage(res.data.message);
             if (res.data.message === "User created successfully...") {
                 setTimeout(() => {
-                    navigate('/login');
+                    navigate('/');
                 }, 2000);
             }
         })
