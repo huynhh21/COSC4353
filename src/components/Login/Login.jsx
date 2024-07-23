@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
+//changed to implement password hashing
 function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [message, setMessage] = useState('')
     const navigate = useNavigate();
-
+    axios.defaults.withCredentials = true;
 
     function handleSubmit(event) {
         event.preventDefault();
-        axios.post('http://localhost:8081/login', {email, password})
+        axios.post('http://localhost:8081/login', { email, password })
         .then(res => {
             setMessage(res.data.message);
             if (res.data.message === 'Login successful...') {
@@ -29,8 +30,6 @@ function Login() {
     }
 
   return (
-    
-        
         <div className="d-flex vh-100 justify-content-center align-items-center bg-primary">
             <div className="p-3 bg-white w-25">
                 <h2>Log in</h2>
@@ -46,7 +45,7 @@ function Login() {
                         onChange={e => setPassword(e.target.value)}/>
                     </div>
                     <button className="btn btn-success">Login</button>
-                    <Link to="/create" className='btn btn-success ms-2'>Register</Link>
+                    <Link to="/create" className='btn btn-success ms-2'>Create Account</Link>
                 </form>
                 {message && <div className="mt-3 alert alert-info">{message}</div>}
             </div>
