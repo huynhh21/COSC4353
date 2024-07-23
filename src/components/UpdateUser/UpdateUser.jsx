@@ -1,13 +1,15 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
+import { Form, Button } from 'react-bootstrap';
 
+//changed to add password hashing
 function UpdateUser() {
     const [userData, setUserData] = useState({
         name: '',
         email: '',
         password: '',
-        username: '',
+        username: ''
     });
     const [message, setMessage] = useState('');
     const {id} = useParams();
@@ -16,23 +18,28 @@ function UpdateUser() {
     useEffect(() => {
         // Fetch user data by ID
         axios.get(`http://localhost:8081/user/${id}`)
-          .then(res => {
-            setUserData({
-                name: res.data.Name || '',
-                email: res.data.Email || '',
-                username: res.data.Username || '',
-                password: ''
+            .then(res => {
+                if (res.data.Status === "Success") {
+                    setUserData({
+                        name: res.data.user.Name || '',
+                        email: res.data.user.Email || '',
+                        username: res.data.user.Username || '',
+                        password: ''
+                    });
+                } else {
+                    setMessage(res.data.message || 'Error fetching user data');
+                }
+            })
+            .catch(err => {
+                setMessage('Error fetching user data');
             });
-          })
-          .catch(err => {
-            setMessage('Error fetching user data');
-          });
     }, [id]);
 
-    const handleChange = (e) => {
+      const handleChange = (e) => {
         const { name, value } = e.target;
         setUserData({ ...userData, [name]: value });
-    };
+      };
+
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -50,46 +57,46 @@ function UpdateUser() {
         });
     };
 
-  return (
-    <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
-        <div className='w-50 bg-white rounded p-3'>
-            <form onSubmit={handleSubmit}>
-                <h2>Update User Login</h2>
-                <div className='mb-2'>
-                    <label htmlFor="">Name</label>
-                    <input type="text" name="name" className='form-control'
-                    value={userData.name || ''}
-                    onChange={handleChange}
-                    />
-                </div>
-                <div className='mb-2'>
-                    <label htmlFor="">Username</label>
-                    <input type="text" name="username" className='form-control'
-                    value={userData.username || ''}
-                    onChange={handleChange}
-                    />
-                </div>
-                <div className='mb-2'>
-                    <label htmlFor="">Email</label>
-                    <input type="email" name="email" className='form-control'
-                    value={userData.email || ''}
-                    onChange={handleChange}
-                    />
-                </div>
-                <div className='mb-2'>
-                    <label htmlFor="">Password</label>
-                    <input type="password" name="password" className='form-control'
-                    value={userData.password}
-                    onChange={handleChange}
-                    placeholder="Leave blank to keep current password"
-                    />
-                </div>
-                <button className='btn btn-success'>Update</button>
-            </form>
-            {message && <div className="mt-3 alert alert-info">{message}</div>}
+    return (
+        <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
+            <div className='w-50 bg-white rounded p-3'>
+                <form onSubmit={handleSubmit}>
+                    <h2>Update User Login</h2>
+                    <div className='mb-2'>
+                        <label htmlFor="">Name</label>
+                        <input type="text" name="name" className='form-control'
+                        value={userData.name || ''}
+                        onChange={handleChange}
+                        />
+                    </div>
+                    <div className='mb-2'>
+                        <label htmlFor="">Username</label>
+                        <input type="text" name="username" className='form-control'
+                        value={userData.username || ''}
+                        onChange={handleChange}
+                        />
+                    </div>
+                    <div className='mb-2'>
+                        <label htmlFor="">Email</label>
+                        <input type="email" name="email" className='form-control'
+                        value={userData.email || ''}
+                        onChange={handleChange}
+                        />
+                    </div>
+                    <div className='mb-2'>
+                        <label htmlFor="">Password</label>
+                        <input type="password" name="password" className='form-control'
+                        value={userData.password}
+                        onChange={handleChange}
+                        placeholder="Leave blank to keep current password"
+                        />
+                    </div>
+                    <button className='btn btn-success'>Update</button>
+                </form>
+                {message && <div className="mt-3 alert alert-info">{message}</div>}
+            </div>
         </div>
-    </div>
-  )
+    )
 };
 
 export default UpdateUser
