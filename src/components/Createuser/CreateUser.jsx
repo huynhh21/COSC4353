@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
+//changed to add password hashing
 function CreateUser() {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -14,13 +15,15 @@ function CreateUser() {
         axios.post('http://localhost:8081/create', {name, email, password})
         .then(res => {
             setMessage(res.data.message);
+            if (res.data.message === "User created successfully...") {
                 setTimeout(() => {
                     navigate('/login');
                 }, 2000);
-            })
+            }
+        })
         .catch(err => {
             console.log(err);
-            setMessage('Error');
+            setMessage(err.response?.data?.Error || 'Error creating user');
         });
     }
 
