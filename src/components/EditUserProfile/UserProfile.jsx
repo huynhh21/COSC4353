@@ -13,8 +13,8 @@ function Profile() {
         axios.get(`http://localhost:8081/user/${id}`)
         .then(res => {
             setUser(res.data);
-            setBio(res.data.bio || '');
-            setProfilePic(res.data.profilePic || '');
+            setBio(res.data.user.bio || '');
+            setProfilePic(res.data.user.profilePic || '');
         })
         .catch(err => console.log(err));
     }, [id]);
@@ -42,16 +42,19 @@ function Profile() {
     return (
         <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
             <div className='w-50 bg-white rounded p-3'>
-                <h2>Profile</h2>
+                <h2>Update Profile</h2>
                 <form onSubmit={handleProfileUpdate}>
                 <div className='mb-2'>
                     <label>Name: {user.Name}</label>
                 </div>
                 <div className='mb-2'>
+                    <label>Username: {user.Username}</label>
+                </div>
+                <div className='mb-2'>
                     <label>Email: {user.Email}</label>
                 </div>
                 <div className='mb-2'>
-                    <label>Bio</label>
+                    <label>Update Bio</label>
                     <textarea
                     className='form-control'
                     value={bio}
@@ -60,7 +63,7 @@ function Profile() {
                     ></textarea>
                 </div>
                 <div className='mb-2'>
-                    <label>Profile Picture</label>
+                    <label>Update Profile Picture</label>
                     <input type='file' className='form-control' onChange={handleFileChange} />
                     {user.profilePic && <img src={`http://localhost:8081${user.profilePic}`} alt="Profile" width="100" />}
                 </div>
