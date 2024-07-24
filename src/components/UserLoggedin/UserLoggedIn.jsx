@@ -58,6 +58,30 @@ function UserLoggedin() {
               <div className='mb-2'>
                 <strong>Bio:</strong> {user.bio}
               </div>
+              <div className='mb-2'>
+                <strong>Address1:</strong> {user.Address1}
+              </div>
+              <div className='mb-2'>
+                <strong>Address2:</strong> {user.Address2}
+              </div>
+              <div className='mb-2'>
+                <strong>City:</strong> {user.City}
+              </div>
+              <div className='mb-2'>
+                <strong>State:</strong> {user.State}
+              </div>
+              <div className='mb-2'>
+                <strong>Zipcode:</strong> {user.Zipcode}
+              </div>
+              <div className='mb-2'>
+                <strong>Skills:</strong> {user.Skills}
+              </div>
+              <div className='mb-2'>
+                <strong>Preferences:</strong> {user.Preferences}
+              </div>
+              <div className='mb-2'>
+                <strong>Availability:</strong> {user.Availability}
+              </div>
             </div>
           </div>
         :  //otherwise you need to log in first
