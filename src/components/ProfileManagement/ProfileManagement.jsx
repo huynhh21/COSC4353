@@ -144,6 +144,7 @@ function Management() {
     const [availability, setAvailability] = useState([]);
     const [message, setMessage] = useState('');
     const {id} = useParams();
+    const navigate = useNavigate();
 
     
     const handleSubmit = (event) => {
@@ -167,6 +168,9 @@ function Management() {
         axios.put(`http://localhost:8081/profile-management/${id}`, userProfile)
             .then(response => {
                 setMessage(response.data.message);
+                setTimeout(() => {
+                    navigate(`/loggedin/${id}`);
+                }, 2000);
             })
             .catch(error => {
                 setMessage('Error updating profile management');
