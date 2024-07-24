@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios'
 
-// This file provides the home page for the VolunteerMatching form. It displays the volunteers and the events and allows the 
-// user to match each volunteer by clicking match and entering the event name. This will update in the database under the 
-// `Event` column
+// Added to frontend GitHub
 
 function VolunteerEventHome() {
     const [volunteer, setVolunteer] = useState([])
@@ -35,6 +33,7 @@ function VolunteerEventHome() {
                             <th>City</th>
                             <th>State</th>
                             <th>Zip</th>
+                            <th>Skills</th>
                             <th>Preferences</th>
                             <th>Availability</th>
                             <th>Matched Event</th>
@@ -50,6 +49,7 @@ function VolunteerEventHome() {
                                     <td>{data.City}</td>
                                     <td>{data.State}</td>
                                     <td>{data.Zip}</td>
+                                    <td>{data.Skills}</td>
                                     <td>{data.Preferences}</td>
                                     <td>{data.Availability}</td>
                                     <td>{data.Event}</td>
@@ -70,6 +70,7 @@ function VolunteerEventHome() {
                             <th>Name</th>
                             <th>Description</th>
                             <th>Location</th>
+                            <th>Required Skills</th>
                             <th>Urgency</th>
                             <th>Date</th>
                         </tr>
@@ -81,6 +82,7 @@ function VolunteerEventHome() {
                                     <td>{data.Name}</td>
                                     <td>{data.Description}</td>
                                     <td>{data.Location}</td>
+                                    <td>{data.RequiredSkills}</td>
                                     <td>{data.Urgency}</td>
                                     <td>{data.Date}</td>
                                 </tr>
