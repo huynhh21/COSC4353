@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import  React, {useEffect, useState } from 'react'
+import axios  from 'axios'
 import { Link } from 'react-router-dom'
 
-// This file contains the main "Event" page that lists all of the information about the event and gives access
-// to update, add, and delete each one.
+// Added to frontend GitHub
 
 function Event() {
     const [event, setEvent] = useState([])
@@ -24,7 +23,7 @@ function Event() {
     }
 
     return (
-        <div className='d-flex vh-100 bg-secondary justify-content-center align-items-center'>
+        <div data-testid = "todo-1" className='d-flex vh-100 bg-secondary justify-content-center align-items-center'>
             <div className='bg-white rounded p-3'>
                 <Link to='/create' className='btn btn-success'>Add +</Link>
                 <table className='table'>
@@ -33,6 +32,7 @@ function Event() {
                             <th>Name</th>
                             <th>Description</th>
                             <th>Location</th>
+                            <th>Required Skills</th>
                             <th>Urgency</th>
                             <th>Date</th>
                             <th>Action</th>
@@ -45,6 +45,7 @@ function Event() {
                                     <td>{data.Name}</td>
                                     <td>{data.Description}</td>
                                     <td>{data.Location}</td>
+                                    <td>{data.RequiredSkills}</td>
                                     <td>{data.Urgency}</td>
                                     <td>{data.Date}</td>
                                     <td>
