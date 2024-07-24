@@ -2,12 +2,13 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-// This file provides the functionality for creating an event
+// Added to frontend GitHub
 
 function CreateEvent() {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [location, setLocation] = useState('')
+    const [requiredSkills, setRequiredSkills] = useState('')
     const [urgency, setUrgency] = useState(0)
     const [date, setDate] = useState(new Date());
     const navigate = useNavigate();
@@ -43,6 +44,12 @@ function CreateEvent() {
                     <label htmlFor="">Location</label>
                     <input type="Location" placeholder='Enter Location' className='form-control'
                     onChange={e => setLocation(e.target.value)}
+                    />
+                </div>
+                <div className='mb-2'>
+                    <label htmlFor="">Required Skills</label>
+                    <input type="Required Skills" placeholder='Enter Required Skills' className='form-control'
+                    onChange={e => setRequiredSkills(e.target.value)}
                     />
                 </div>
                 <div className='mb-2'>
