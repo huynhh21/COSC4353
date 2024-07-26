@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
+//update user credentials
 function UpdateUser() {
     const [userData, setUserData] = useState({
         email: '',
