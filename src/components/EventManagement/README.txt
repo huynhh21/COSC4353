@@ -1,5 +1,3 @@
-// This is the code that I used in my App.js to create the links between the main event page the CreateEvent page and the UpdateEvent page
-
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Event from './Event';
@@ -14,7 +12,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Event />}></Route>
           <Route path='/create' element={<CreateEvent />}></Route>
-          <Route path='/update/:id' element={<UpdateEvent />}></Route>
+          <Route path='/update/:event_id' element={<UpdateEvent />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
