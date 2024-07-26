@@ -1,29 +1,22 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Form, Button } from 'react-bootstrap';
 
-//changed to add password hashing
 function UpdateUser() {
     const [userData, setUserData] = useState({
-        name: '',
         email: '',
-        password: '',
-        username: ''
+        password: ''
     });
     const [message, setMessage] = useState('');
-    const {id} = useParams();
+    const { id } = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Fetch user data by ID
         axios.get(`http://localhost:8081/user/${id}`)
             .then(res => {
                 if (res.data.Status === "Success") {
                     setUserData({
-                        name: res.data.user.Name || '',
-                        email: res.data.user.Email || '',
-                        username: res.data.user.Username || '',
+                        email: res.data.user.email || '',
                         password: ''
                     });
                 } else {
@@ -35,26 +28,25 @@ function UpdateUser() {
             });
     }, [id]);
 
-      const handleChange = (e) => {
+    const handleChange = (e) => {
         const { name, value } = e.target;
         setUserData({ ...userData, [name]: value });
-      };
+    };
 
-
-    function handleSubmit(event) {
-        event.preventDefault();
+    const handleSubmit = (e) => {
+        e.preventDefault();
         axios.put(`http://localhost:8081/update/${id}`, userData)
-        .then(res => {
-            setMessage(res.data.message);
-            if (res.data.message === 'User updated successfully...'){
-                setTimeout(() => {
-                    navigate(`/loggedin/${id}`);
-                }, 2000);
-            }
-        })
-        .catch(err => {
-            setMessage(err.response?.data?.message || 'An error occurred');
-        });
+            .then(res => {
+                setMessage(res.data.message);
+                if (res.data.message === 'User updated successfully...'){
+                    setTimeout(() => {
+                        navigate(`/loggedin/${id}`);
+                    }, 2000);
+                }
+            })
+            .catch(err => {
+                setMessage(err.response?.data?.message || 'An error occurred');
+            });
     };
 
     return (
@@ -63,32 +55,18 @@ function UpdateUser() {
                 <form onSubmit={handleSubmit}>
                     <h2>Update User Login</h2>
                     <div className='mb-2'>
-                        <label htmlFor="">Name</label>
-                        <input type="text" name="name" className='form-control'
-                        value={userData.name || ''}
-                        onChange={handleChange}
-                        />
-                    </div>
-                    <div className='mb-2'>
-                        <label htmlFor="">Username</label>
-                        <input type="text" name="username" className='form-control'
-                        value={userData.username || ''}
-                        onChange={handleChange}
-                        />
-                    </div>
-                    <div className='mb-2'>
-                        <label htmlFor="">Email</label>
+                        <label>Email</label>
                         <input type="email" name="email" className='form-control'
-                        value={userData.email || ''}
-                        onChange={handleChange}
+                            value={userData.email || ''}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className='mb-2'>
-                        <label htmlFor="">Password</label>
+                        <label>Password</label>
                         <input type="password" name="password" className='form-control'
-                        value={userData.password}
-                        onChange={handleChange}
-                        placeholder="Leave blank to keep current password"
+                            value={userData.password}
+                            onChange={handleChange}
+                            placeholder="Leave blank to keep current password"
                         />
                     </div>
                     <button className='btn btn-success'>Update</button>
@@ -96,7 +74,7 @@ function UpdateUser() {
                 {message && <div className="mt-3 alert alert-info">{message}</div>}
             </div>
         </div>
-    )
-};
+    );
+}
 
-export default UpdateUser
+export default UpdateUser;
