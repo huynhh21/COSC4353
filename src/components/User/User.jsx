@@ -32,7 +32,7 @@ function User() {
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Email</th>
+                        <th>Username</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -40,10 +40,10 @@ function User() {
                     {
                     user.map((data, i) => (
                         <tr>
-                            <td>{data.Name}</td>
-                            <td>{data.Email}</td>
+                            <td>{data.full_name}</td>
+                            <td>{data.username}</td>
                             <td>
-                                <button className='btn btn-danger ms-2' onClick={e => handleDelete(data.ID)}>Delete</button>
+                                <button className='btn btn-danger ms-2' onClick={e => handleDelete(data.user_id)}>Delete</button>
                             </td>
                         </tr>
                     ))
