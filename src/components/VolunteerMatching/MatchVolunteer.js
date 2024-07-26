@@ -2,18 +2,15 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 
-// This file provides the functionality for "matching" the volunteer to an event by allowing the user
-// to enter the name of the event under their volunteer details in the database.
-
 function UpdateEvent() {
-    const [ matchedEvent, setMatchedEvent ] = useState('');
-    const {id} = useParams();
+    const [matchedEvent, setMatchedEvent] = useState('');
+    const {user_id} = useParams();
     const navigate = useNavigate();
 
     function handleSubmit(event) {
         event.preventDefault();
 
-        axios.put('http://localhost:8081/match/'+id, {matchedEvent})
+        axios.put('http://localhost:8081/match/'+user_id, {matchedEvent})
         .then(res => {
             console.log(res);
             navigate('/');
