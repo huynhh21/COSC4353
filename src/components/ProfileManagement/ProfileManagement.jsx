@@ -82,7 +82,10 @@ function SkillsDropDown({ selectedSkills, setSelectedSkills }){
         {skill: "Organization", key: 1},
         {skill: "Teamwork", key: 2},
         {skill: "Leadership", key: 3},
-        {skill: "Attention to Detail", key: 4}
+        {skill: "Attention to Detail", key: 4},
+        {skill: "Adaptability", key: 5},
+        {skill: "Motivated", key: 6}
+        
     ];
     return (
         <div style={{width:"80%", display: "flex"}}>
@@ -213,7 +216,7 @@ function Management() {
           </div>
 
           <div className="form-group">
-              <label>Skills:</label>
+              <label>Soft Skills:</label>
               <SkillsDropDown selectedSkills={skills} setSelectedSkills={setSkills} />  {/*Drop Down, selection required*/}
           </div>
 
