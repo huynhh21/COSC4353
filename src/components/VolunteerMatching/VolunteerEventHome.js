@@ -44,17 +44,17 @@ function VolunteerEventHome() {
                         {
                             volunteer.map((data, i) => (
                                 <tr key={i}>
-                                    <td>{data.Name}</td>
-                                    <td>{data.Address}</td>
-                                    <td>{data.City}</td>
-                                    <td>{data.State}</td>
-                                    <td>{data.Zip}</td>
-                                    <td>{data.Skills}</td>
-                                    <td>{data.Preferences}</td>
-                                    <td>{data.Availability}</td>
-                                    <td>{data.Event}</td>
+                                    <td>{data.full_name}</td>
+                                    <td>{data.address1}</td>
+                                    <td>{data.city}</td>
+                                    <td>{data.state}</td>
+                                    <td>{data.zipcode}</td>
+                                    <td>{data.skills}</td>
+                                    <td>{data.preferences}</td>
+                                    <td>{data.availability}</td>
+                                    <td>{data.event_match}</td>
                                     <td>
-                                        <Link to={`match/${data.ID}`} className='btn btn-primary'>Match</Link>
+                                        <Link to={`match/${data.user_id}`} className='btn btn-primary'>Match</Link>
                                     </td>
                                 </tr>
                             ))
@@ -79,12 +79,12 @@ function VolunteerEventHome() {
                         {
                             event.map((data, i) => (
                                 <tr key={i}>
-                                    <td>{data.Name}</td>
-                                    <td>{data.Description}</td>
-                                    <td>{data.Location}</td>
-                                    <td>{data.RequiredSkills}</td>
-                                    <td>{data.Urgency}</td>
-                                    <td>{data.Date}</td>
+                                    <td>{data.event_name}</td>
+                                    <td>{data.description}</td>
+                                    <td>{data.location}</td>
+                                    <td>{data.required_skills}</td>
+                                    <td>{data.urgency}</td>
+                                    <td>{data.eventDate}</td>
                                 </tr>
                             ))
                         }
