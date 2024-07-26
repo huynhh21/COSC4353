@@ -2,8 +2,6 @@ import  React, {useEffect, useState } from 'react'
 import axios  from 'axios'
 import { Link } from 'react-router-dom'
 
-// Added to frontend GitHub
-
 function Event() {
     const [event, setEvent] = useState([])
 
@@ -13,9 +11,9 @@ function Event() {
         .catch(err => console.log(err));
     }, [])
 
-    const handleDelete = async (id) => {
+    const handleDelete = async (event_id) => {
         try {
-            await axios.delete('http://localhost:8081/event/'+id)
+            await axios.delete('http://localhost:8081/event/'+event_id)
             window.location.reload()
         }catch(err) {
             console.log(err);
@@ -42,15 +40,15 @@ function Event() {
                         {
                             event.map((data, i) => (
                                 <tr key={i}>
-                                    <td>{data.Name}</td>
-                                    <td>{data.Description}</td>
-                                    <td>{data.Location}</td>
-                                    <td>{data.RequiredSkills}</td>
-                                    <td>{data.Urgency}</td>
-                                    <td>{data.Date}</td>
+                                    <td>{data.event_name}</td>
+                                    <td>{data.description}</td>
+                                    <td>{data.location}</td>
+                                    <td>{data.required_skills}</td>
+                                    <td>{data.urgency}</td>
+                                    <td>{data.eventDate}</td>
                                     <td>
-                                        <Link to={`update/${data.ID}`} className='btn btn-primary'>Update</Link>
-                                        <button className='btn btn-danger ms-2' onClick={e => handleDelete(data.ID)}>Delete</button>
+                                        <Link to={`update/${data.event_id}`} className='btn btn-primary'>Update</Link>
+                                        <button className='btn btn-danger ms-2' onClick={e => handleDelete(data.event_id)}>Delete</button>
                                     </td>
                                 </tr>
                             ))
