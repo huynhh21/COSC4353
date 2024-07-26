@@ -11,13 +11,13 @@ function UpdateEvent() {
     const [requiredSkills, setRequiredSkills] = useState('')
     const [urgency, setUrgency] = useState(0)
     const [date, setDate] = useState(new Date());
-    const {id} = useParams();
+    const {event_id} = useParams();
     const navigate = useNavigate();
 
     function handleSubmit(event) {
         event.preventDefault();
 
-        axios.put('http://localhost:8081/update/'+id, {name, description, location, requiredSkills, urgency, date})
+        axios.put('http://localhost:8081/update/'+event_id, {name, description, location, requiredSkills, urgency, date})
         .then(res => {
             console.log(res);
             navigate('/');
