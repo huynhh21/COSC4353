@@ -3,6 +3,7 @@ import React from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+//fetch all users for temporary view of all users
 function User() {
     const [user, setUser] = useState([])
     useEffect(() => {
