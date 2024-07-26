@@ -35,6 +35,27 @@ function UserLoggedin() {
     navigate('/')
   };
 
+  //do to multiselect we need to format output
+  const parseJson = (text) => {
+    try {
+      return JSON.parse(text);
+    } catch (e) {
+      return [];
+    }
+  };
+
+  // Function to format skills from JSON array
+  const formatSkills = (skillsText) => {
+    const skills = parseJson(skillsText);
+    return skills.length > 0 ? skills.map(skill => skill.skill).join(', ') : 'No skills specified';
+  };
+
+  // Function to format availability from JSON array
+  const formatAvailability = (availabilityText) => {
+    const availability = parseJson(availabilityText);
+    return availability.length > 0 ? availability.join(', ') : 'No availability specified';
+  };
+
 
   return (
 
@@ -44,43 +65,40 @@ function UserLoggedin() {
           <div className='d-flex flex-column align-items-center'>
             <h3>You are Authorized --- {id}</h3>
             <div className='mt-4'>
-              <button onClick={handleLogout} className='btn btn-danger' style={{ position: 'absolute', top: '10px', right: '100px' }}>Logout</button>
-              <Link to={`/loggedin/updatelogin/${id}`} className='btn btn-primary' style={{ position: 'absolute', top: '10px', right: '190px' }}>Update Login</Link>
-              <Link to={`/loggedin/updateprofile/${id}`} className='btn btn-primary' style={{ position: 'absolute', top: '10px', right: '320px' }}>Update Profile</Link>
-              <Link to={`/loggedin/profile-management/${id}`} className='btn btn-warning' style={{ position: 'absolute', top: '10px', right: '460px' }}>Volunteer Info</Link>
+              <button onClick={handleLogout} className='btn btn-danger' style={{ position: 'absolute', top: '10px', right: '30px' }}>Logout</button>
+              <Link to={`/loggedin/updatelogin/${id}`} className='btn btn-primary' style={{ position: 'absolute', top: '10px', right: '115px' }}>Update Login</Link>
+              <Link to={`/loggedin/updateprofile/${id}`} className='btn btn-primary' style={{ position: 'absolute', top: '10px', right: '245px' }}>Update Profile</Link>
+              <Link to={`/loggedin/profile-management/${id}`} className='btn btn-warning' style={{ position: 'absolute', top: '10px', right: '380px' }}>Update Volunteer Info</Link>
             </div>
             <div className='mt-4 w-50 bg-light rounded p-3'>
-              <h2>@{user.Username}</h2>
-              {user.profilePic && <img src={`http://localhost:8081${user.profilePic}`} alt="Profile" width="150" height="140" className='mb-3' style={{ borderRadius: '50%' }} />}
+              <h2>@{user.username}</h2>
+              {user.profile_picture && <img src={`http://localhost:8081${user.profile_picture}`} alt="Profile" width="150" height="140" className='mb-3' style={{ borderRadius: '50%' }} />}
               <div className='mb-2'>
-                <strong>Name:</strong> {user.Name}
+                <strong>Name:</strong> {user.full_name}
               </div>
               <div className='mb-2'>
-                <strong>Bio:</strong> {user.bio}
+                <strong>Address1:</strong> {user.address1}
               </div>
               <div className='mb-2'>
-                <strong>Address1:</strong> {user.Address1}
+                <strong>Address2:</strong> {user.address2}
               </div>
               <div className='mb-2'>
-                <strong>Address2:</strong> {user.Address2}
+                <strong>City:</strong> {user.city}
               </div>
               <div className='mb-2'>
-                <strong>City:</strong> {user.City}
+                <strong>State:</strong> {user.state}
               </div>
               <div className='mb-2'>
-                <strong>State:</strong> {user.State}
+                <strong>Zipcode:</strong> {user.zipcode}
               </div>
               <div className='mb-2'>
-                <strong>Zipcode:</strong> {user.Zipcode}
+                <strong>Skills:</strong> {formatSkills(user.skills)}
               </div>
               <div className='mb-2'>
-                <strong>Skills:</strong> {user.Skills}
+                <strong>Preferences:</strong> {user.preferences}
               </div>
               <div className='mb-2'>
-                <strong>Preferences:</strong> {user.Preferences}
-              </div>
-              <div className='mb-2'>
-                <strong>Availability:</strong> {user.Availability}
+                <strong>Availability:</strong> {formatAvailability(user.availability)}
               </div>
             </div>
           </div>
