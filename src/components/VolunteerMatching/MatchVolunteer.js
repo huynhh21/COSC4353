@@ -3,14 +3,15 @@ import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 
 function UpdateEvent() {
-    const [matchedEvent, setMatchedEvent] = useState('');
+    const [matchedEvent, setMatchedEvent] = useState(''); // We will set the matchedEvent value by using the event_id
+    const [participation, setParticipation] = useState('');
     const {user_id} = useParams();
     const navigate = useNavigate();
 
     function handleSubmit(event) {
         event.preventDefault();
 
-        axios.put('http://localhost:8081/match/'+user_id, {matchedEvent})
+        axios.put('http://localhost:8081/match/'+user_id, {user_id, matchedEvent, participation})
         .then(res => {
             console.log(res);
             navigate('/');
@@ -23,9 +24,15 @@ function UpdateEvent() {
             <form onSubmit={handleSubmit}>
                 <h2>Match Event</h2>
                 <div className='mb-2'>
-                    <label htmlFor="">Event Name</label>
-                    <input type="text" placeholder = 'Enter name' className='form-control'
+                    <label htmlFor="">Event ID</label>
+                    <input type="text" placeholder = 'Enter event ID' className='form-control'
                     onChange={e => setMatchedEvent(e.target.value)}
+                    />
+                </div>
+                <div className='mb-2'>
+                    <label htmlFor="">Participation</label>
+                    <input type="text" placeholder = 'Enter event Participation' className='form-control'
+                    onChange={e => setParticipation(e.target.value)}
                     />
                 </div>
                 <button className='btn btn-success'>Submit</button>
