@@ -6,7 +6,7 @@ function Event() {
     const [event, setEvent] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:8081/')
+        axios.get('http://localhost:8081/events')
         .then(res => setEvent(res.data))
         .catch(err => console.log(err));
     }, [])
