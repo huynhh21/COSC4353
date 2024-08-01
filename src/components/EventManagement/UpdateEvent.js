@@ -17,7 +17,7 @@ function UpdateEvent() {
     function handleSubmit(event) {
         event.preventDefault();
 
-        axios.put('http://localhost:8081/update/'+event_id, {name, description, location, requiredSkills, urgency, date})
+        axios.put('http://localhost:8081/events/update/${event_id}', {name, description, location, requiredSkills, urgency, date})
         .then(res => {
             console.log(res);
             navigate('/');
