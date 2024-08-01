@@ -11,7 +11,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Event />}></Route>
-          <Route path='/create' element={<CreateEvent />}></Route>
+          <Route path='/events/create' element={<CreateEvent />}></Route>
           <Route path='/update/:event_id' element={<UpdateEvent />}></Route>
         </Routes>
       </BrowserRouter>
