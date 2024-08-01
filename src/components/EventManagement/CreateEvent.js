@@ -16,7 +16,7 @@ function CreateEvent() {
     function handleSubmit(event) {
         event.preventDefault();
 
-        axios.post('http://localhost:8081/create', {name, description, location, requiredSkills, urgency, date})
+        axios.post('http://localhost:8081/events/create', {name, description, location, requiredSkills, urgency, date})
         .then(res => {
             console.log(res);
             navigate('/');
