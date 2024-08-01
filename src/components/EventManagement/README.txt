@@ -12,7 +12,7 @@ function App() {
         <Routes>
           <Route path='/events' element={<Event />}></Route>
           <Route path='/events/create' element={<CreateEvent />}></Route>
-          <Route path='/update/:event_id' element={<UpdateEvent />}></Route>
+          <Route path='/events/update/:event_id' element={<UpdateEvent />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
