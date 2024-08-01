@@ -19,7 +19,7 @@ function CreateEvent() {
         axios.post('http://localhost:8081/events/create', {name, description, location, requiredSkills, urgency, date})
         .then(res => {
             console.log(res);
-            navigate('/');
+            navigate('/events');
         }).catch(err => console.log(err));
     }
 
