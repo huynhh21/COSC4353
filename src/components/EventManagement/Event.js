@@ -13,7 +13,7 @@ function Event() {
 
     const handleDelete = async (event_id) => {
         try {
-            await axios.delete('http://localhost:8081/event/'+event_id)
+            await axios.delete('http://localhost:8081/events/'+event_id)
             window.location.reload()
         }catch(err) {
             console.log(err);
