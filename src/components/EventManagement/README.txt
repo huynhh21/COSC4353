@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Event />}></Route>
+          <Route path='/events' element={<Event />}></Route>
           <Route path='/events/create' element={<CreateEvent />}></Route>
           <Route path='/update/:event_id' element={<UpdateEvent />}></Route>
         </Routes>
