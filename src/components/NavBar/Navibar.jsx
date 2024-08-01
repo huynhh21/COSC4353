@@ -1,3 +1,4 @@
+
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -10,6 +11,14 @@ import LoggedIn from "./UserLoggedin";
 import UpdateUser from "./UpdateUser";
 import Profile from "./UserProfile";
 
+import Event from './Event';
+import CreateEvent from './CreateEvent'
+import UpdateEvent from './UpdateEvent';
+
+import VolunteerEventHome from './VolunteerEventHome';
+import MatchVolunteer from './MatchVolunteer';
+
+
 function Bar() {
   return (
     <Router>
@@ -20,7 +29,7 @@ function Bar() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-{/*                 <Nav.Link as={Link} to={"/"}>Home</Nav.Link> */}
+                
                 <Nav.Link as={Link} to={"/"}>Login</Nav.Link>
                 <Nav.Link as={Link} to={"/create"}>Register</Nav.Link>
                 <Nav.Link as={Link} to={"/users"}>Users</Nav.Link>
@@ -31,7 +40,6 @@ function Bar() {
       </div>
       <div>
         <Routes>
-{/*           <Route path="/" element={<Home />} /> */}
 
           <Route path="/" element={<Login />} />
 
@@ -46,6 +54,13 @@ function Bar() {
           <Route path="/create" element={<CreateUser />} />
 
           <Route path="/users" element={<User />} />
+
+          <Route path='/events' element={<Event />}></Route>
+          <Route path='/events/create' element={<CreateEvent />}></Route>
+          <Route path='/events/update/:event_id' element={<UpdateEvent />}></Route>
+
+          <Route path='/volunteer-event-home' element={<VolunteerEventHome />}></Route>
+          <Route path='/volunteer-event-home/match/:user_id' element={<MatchVolunteer />}></Route>
             
         </Routes>
       </div>
