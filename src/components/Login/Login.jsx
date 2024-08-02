@@ -19,8 +19,9 @@ function Login() {
             setMessage(res.data.message);
             if (res.data.message === 'Login successful...') {
                 const userId = res.data.userId;
+                const redirectUrl = res.data.redirectUrl;
                 setTimeout(() => {
-                    navigate(`/loggedin/${userId}`);
+                    navigate(redirectUrl);
                 }, 2000);
             }
         })
