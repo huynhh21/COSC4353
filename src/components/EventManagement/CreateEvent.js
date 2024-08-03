@@ -1,14 +1,32 @@
 import axios from 'axios';
+import { Multiselect } from 'multiselect-react-dropdown';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 // Added to frontend GitHub
 
+function RequiredSkillsDropDown({ selectedSkills, setSelectedSkills }){
+    const options = [
+        {skill: "Organization", key: 1},
+        {skill: "Teamwork", key: 2},
+        {skill: "Leadership", key: 3},
+        {skill: "Attention to Detail", key: 4},
+        {skill: "Adaptability", key: 5},
+        {skill: "Motivated", key: 6}
+        
+    ];
+    return (
+        <div className="form-group">
+            <Multiselect options={options} displayValue="skill" selectedValues={selectedSkills} onSelect={setSelectedSkills} onRemove={setSelectedSkills}/>
+        </div>
+    );
+}
+
 function CreateEvent() {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [location, setLocation] = useState('')
-    const [requiredSkills, setRequiredSkills] = useState('')
+    const [requiredSkills, setRequiredSkills] = useState([])
     const [urgency, setUrgency] = useState(0)
     const [date, setDate] = useState(new Date());
     const navigate = useNavigate();
@@ -48,9 +66,7 @@ function CreateEvent() {
                 </div>
                 <div className='mb-2'>
                     <label htmlFor="">Required Skills</label>
-                    <input type="Required Skills" placeholder='Enter Required Skills' className='form-control'
-                    onChange={e => setRequiredSkills(e.target.value)}
-                    />
+                    <RequiredSkillsDropDown selectedSkills={requiredSkills} setSelectedSkills={setRequiredSkills}/>
                 </div>
                 <div className='mb-2'>
                     <label htmlFor="">Urgency</label>
