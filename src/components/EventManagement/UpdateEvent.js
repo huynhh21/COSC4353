@@ -1,8 +1,26 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import { Multiselect } from 'multiselect-react-dropdown';
 import { useNavigate, useParams } from 'react-router-dom';
 
 // Added to frontend GitHub
+
+function RequiredSkillsDropDown({ selectedSkills, setSelectedSkills }){
+    const options = [
+        {skill: "Organization", key: 1},
+        {skill: "Teamwork", key: 2},
+        {skill: "Leadership", key: 3},
+        {skill: "Attention to Detail", key: 4},
+        {skill: "Adaptability", key: 5},
+        {skill: "Motivated", key: 6}
+        
+    ];
+    return (
+        <div className="form-group">
+            <Multiselect options={options} displayValue="skill" selectedValues={selectedSkills} onSelect={setSelectedSkills} onRemove={setSelectedSkills}/>
+        </div>
+    );
+}
 
 function UpdateEvent() {
     const [name, setName] = useState('')
@@ -17,10 +35,10 @@ function UpdateEvent() {
     function handleSubmit(event) {
         event.preventDefault();
 
-        axios.put('http://localhost:8081/events/update/${event_id}', {name, description, location, requiredSkills, urgency, date})
+        axios.put('http://localhost:8081/events/update/'+event_id, {name, description, location, requiredSkills, urgency, date})
         .then(res => {
             console.log(res);
-            navigate('/');
+            navigate('/events');
         }).catch(err => console.log(err));
     }
 
@@ -49,9 +67,7 @@ function UpdateEvent() {
                 </div>
                 <div className='mb-2'>
                     <label htmlFor="">Required Skills</label>
-                    <input type="Required Sklls" placeholder='Enter required sklls' className='form-control'
-                    onChange={e => setRequiredSkills(e.target.value)}
-                    />
+                    <RequiredSkillsDropDown selectedSkills={requiredSkills} setSelectedSkills={setRequiredSkills}/>
                 </div>
                 <div className='mb-2'>
                     <label htmlFor="">Urgency</label>
