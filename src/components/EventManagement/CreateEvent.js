@@ -22,6 +22,25 @@ function RequiredSkillsDropDown({ selectedSkills, setSelectedSkills }){
     );
 }
 
+function UrgencyDropDown({ selectedUrgency, setSelectedUrgency }) {
+    const options = [
+        {label: "Critical", key: 1},
+        {label: "High", key: 2},
+        {label: "Medium", key: 3},
+        {label: "Low", key: 4}
+    ];
+
+    return (
+        <div className="form-group">
+            <select className='form-select' value={selectedUrgency} onChange={setSelectedUrgency}>
+                {options.map(option => (
+                    <option key={option.label} value={option.label}>{option.label}</option>
+                ))}
+            </select>
+        </div>
+    );
+}
+
 function CreateEvent() {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
@@ -70,9 +89,7 @@ function CreateEvent() {
                 </div>
                 <div className='mb-2'>
                     <label htmlFor="">Urgency</label>
-                    <input type="Urgency" placeholder='Enter Urgency' className='form-control'
-                    onChange={e => setUrgency(e.target.value)}
-                    />
+                    <UrgencyDropDown selectedSkills={urgency} setSelectedUrgency={(e) => setUrgency(e.target.value)}/>
                 </div>
                 <div className='mb-2'>
                     <label htmlFor="">Date</label>
