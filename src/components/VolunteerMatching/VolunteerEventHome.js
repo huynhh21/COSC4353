@@ -44,10 +44,22 @@ function VolunteerEventHome() {
         return availability.length > 0 ? availability.join(', ') : 'No availability specified';
     };
 
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        let month = '' + (date.getMonth() + 1);
+        let day = '' + date.getDate();
+        const year = date.getFullYear();
+
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+
+        return [month, day, year].join('/');
+    };
+
 
     return (
-        <div className='d-flex vh-100 bg-secondary justify-content-center align-items-center'>
-            <div className='bg-white rounded p-3'>
+        <div className='d-flex flex-column vh-100 bg-secondary justify-content-center align-items-center'>
+            <div className='bg-white rounded p-3 mb-4'>
                 <table className='table'>
                     <thead>
                         <header style={{ fontWeight: 'bold' }}>Volunteer</header>
@@ -76,7 +88,7 @@ function VolunteerEventHome() {
                                     <td>{data.preferences}</td>
                                     <td>{formatAvailability(data.availability)}</td>
                                     <td>
-                                        <Link to={`match/${data.user_id}`} className='btn btn-primary'>Match</Link>
+                                        <Link to={`match/${data.user_id}/${data.full_name}`} className='btn btn-primary'>Match</Link>
                                     </td>
                                 </tr>
                             ))
@@ -84,7 +96,7 @@ function VolunteerEventHome() {
                     </tbody>
                 </table>
             </div>
-            <div className='bg-white rounded p-3 ms-3'>
+            <div className='bg-white rounded p-3'>
                 <table className='table'>
                     <thead>
                         <header style={{ fontWeight: 'bold' }}>Event</header>
@@ -106,9 +118,9 @@ function VolunteerEventHome() {
                                     <td>{data.event_name}</td>
                                     <td>{data.description}</td>
                                     <td>{data.location}</td>
-                                    <td>{data.required_skills}</td>
+                                    <td>{formatSkills(data.required_skills)}</td>
                                     <td>{data.urgency}</td>
-                                    <td>{data.event_date}</td>
+                                    <td>{formatDate(data.event_date)}</td>
                                 </tr>
                             ))
                         }
