@@ -8,7 +8,7 @@ const VolunteerHistory = ({ userId }) => {
   useEffect(() => {
     const fetchVolunteerHistory = async () => {
       try {
-        const response = await axios.get('/volunteerHistory', {
+        const response = await axios.get('http://localhost:8081/volunteerHistory', {
           params: { userId }
         });
         setVolunteerEntries(response.data);
