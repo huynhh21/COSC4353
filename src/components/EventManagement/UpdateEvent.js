@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 // Added to frontend GitHub
 
-function RequiredSkillsDropDown({ selectedSkills, setSelectedSkills }){
+function RequiredSkillsDropDown({ selectedSkills, setSelectedSkills }) {
     const options = [
         {skill: "Organization", key: 1},
         {skill: "Teamwork", key: 2},
@@ -15,9 +15,29 @@ function RequiredSkillsDropDown({ selectedSkills, setSelectedSkills }){
         {skill: "Motivated", key: 6}
         
     ];
+
     return (
         <div className="form-group">
             <Multiselect options={options} displayValue="skill" selectedValues={selectedSkills} onSelect={setSelectedSkills} onRemove={setSelectedSkills}/>
+        </div>
+    );
+}
+
+function UrgencyDropDown({ selectedUrgency, setSelectedUrgency }) {
+    const options = [
+        {label: "Critical", key: 1},
+        {label: "High", key: 2},
+        {label: "Medium", key: 3},
+        {label: "Low", key: 4}
+    ];
+
+    return (
+        <div className="form-group">
+            <select className='form-select' value={selectedUrgency} onChange={setSelectedUrgency}>
+                {options.map(option => (
+                    <option key={option.label} value={option.label}>{option.label}</option>
+                ))}
+            </select>
         </div>
     );
 }
@@ -27,7 +47,7 @@ function UpdateEvent() {
     const [description, setDescription] = useState('')
     const [location, setLocation] = useState('')
     const [requiredSkills, setRequiredSkills] = useState('')
-    const [urgency, setUrgency] = useState(0)
+    const [urgency, setUrgency] = useState('')
     const [date, setDate] = useState(new Date());
     const {event_id} = useParams();
     const navigate = useNavigate();
@@ -71,9 +91,7 @@ function UpdateEvent() {
                 </div>
                 <div className='mb-2'>
                     <label htmlFor="">Urgency</label>
-                    <input type="Urgency" placeholder='Enter urgency' className='form-control'
-                    onChange={e => setUrgency(e.target.value)}
-                    />
+                    <UrgencyDropDown selectedSkills={urgency} setSelectedUrgency={(e) => setUrgency(e.target.value)}/>
                 </div>
                 <div className='mb-2'>
                     <label htmlFor="">Date</label>
