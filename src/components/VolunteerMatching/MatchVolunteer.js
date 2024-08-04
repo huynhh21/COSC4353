@@ -5,16 +5,16 @@ import { useNavigate, useParams } from 'react-router-dom';
 function UpdateEvent() {
     const [matchedEvent, setMatchedEvent] = useState(''); // We will set the matchedEvent value by using the event_id
     const [participation, setParticipation] = useState('');
-    const {user_id} = useParams();
+    const {user_id, full_name} = useParams();
     const navigate = useNavigate();
 
     function handleSubmit(event) {
         event.preventDefault();
 
-        axios.put('http://localhost:8081/match/'+user_id, {user_id, matchedEvent, participation})
+        axios.put('http://localhost:8081/volunteers/match/'+user_id, {user_id, matchedEvent, participation})
         .then(res => {
             console.log(res);
-            navigate('/');
+            navigate('/volunteer-event-home');
         }).catch(err => console.log(err));
     }
 
@@ -22,7 +22,7 @@ function UpdateEvent() {
     <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
         <div className='w-50 bg-white rounded p-3'>
             <form onSubmit={handleSubmit}>
-                <h2>Match Event</h2>
+                <h2>Match Event for {full_name}</h2>
                 <div className='mb-2'>
                     <label htmlFor="">Event ID</label>
                     <input type="text" placeholder = 'Enter event ID' className='form-control'
